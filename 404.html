@@ -23,17 +23,17 @@
       return pathSegments.length > 0 ? pathSegments[0] : null;
     }
     const firstSegment = getFirstPathSegment();
-
+    console.log('First segment:', firstSegment); // Debugging line
     // Define your redirect rules
     if (firstSegment === 'buyer') {
         window.location.href = 'https://play.google.com/store/apps/details?id=enp.oneroot.marketplace';
     } else if (firstSegment === 'farmer') {
         window.location.href = 'https://play.google.com/store/apps/details?id=enp.oneroot.farmerMarketplace';
-    } else {
-        // Optional: show fallback info
-        document.getElementById('invalid-url').textContent =
-        `Unknown section: "${firstSegment}"\nURL: ${window.location.href}`;
-    }
+    } 
+    // else {
+    //     // Optional: show fallback info
+    //     document.getElementById('invalid-url').textContent = `Unknown section: "${firstSegment}"\nURL: ${window.location.href}`;
+    // }
 
   </script>
    <style>
