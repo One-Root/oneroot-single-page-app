@@ -1,0 +1,92 @@
+<!-- 404.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>404 - Page Not Found</title>
+  <meta name="robots" content="noindex">
+</head>
+<body>
+    <div class="container">
+        <img 
+            src="assets/images/redirect/default.png" 
+            alt="OneRoot Logo" 
+            class="logo" 
+        />
+        <div class="loader"></div>
+        <p class="info">Redirecting you...</p>
+    </div>
+
+  <script>
+    function getFirstPathSegment() {
+      const pathSegments = window.location.pathname.split('/').filter(Boolean);
+      return pathSegments.length > 0 ? pathSegments[0] : null;
+    }
+    const firstSegment = getFirstPathSegment();
+
+    // Define your redirect rules
+    if (firstSegment === 'buyer') {
+        window.location.href = 'https://play.google.com/store/apps/details?id=enp.oneroot.marketplace';
+    } else if (firstSegment === 'farmer') {
+        window.location.href = 'https://play.google.com/store/apps/details?id=enp.oneroot.farmerMarketplace';
+    } else {
+        // Optional: show fallback info
+        document.getElementById('invalid-url').textContent =
+        `Unknown section: "${firstSegment}"\nURL: ${window.location.href}`;
+    }
+
+  </script>
+   <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .logo {
+      /* max-width: 150px; */
+      width: 50%;
+      margin-bottom: 20px;
+    }
+
+    .loader {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #4caf50;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 15px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .info {
+      font-size: 16px;
+      color: #333;
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        max-width: 120px;
+      }
+
+      .info {
+        font-size: 14px;
+      }
+    }
+  </style>
+</body>
+</html>
